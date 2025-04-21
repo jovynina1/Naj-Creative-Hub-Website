@@ -1,117 +1,149 @@
-* {
-  box-sizing: border-box;
+body {
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-}
-
-.body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  background-color: #f4f4f4;
 }
 
 .container {
-  width: 70%;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1000px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
+/* Navigation Styles */
 .topnav {
-  background-color: rgb(238, 227, 227);
-  width: 100%;
-  overflow: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 .topnav a {
-  float: right;
-  padding: 12px;
-  color: black;
-  text-decoration: underline;
-  font-size: 20px;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  transition: background-color 0.3s;
 }
 
-.topnav input[type="text"] {
-  border: 4px;
-  padding: 15px;
+.topnav a:hover {
+  background-color: #575757;
 }
 
-.Logo img {
-  width: 200px;
-  border-radius: 100px;
-  margin-right: 20px;
-  padding-right: 5px;
-  margin-top: 30px;
+.search-container {
+  display: flex;
+  align-items: center;
 }
 
+.search-container input {
+  padding: 5px;
+  border: none;
+  border-radius: 4px;
+}
+
+/* Logo Styles */
+.logo {
+  text-align: left;
+  margin: 20px 0;
+}
+
+.logo img {
+  width: 150px; /* Set a fixed width */
+  height: 150px; /* Set a fixed height */
+  border-radius: 50%; /* Make the image round */
+  object-fit: cover; /* Ensure the image covers the area without distortion */
+}
+
+/* Second Navigation Styles */
 .secondnav {
-  margin-top: 40px;
-  margin-bottom: 40px;
+  display: flex;
+  padding-bottom: 20px; /* Adjust the value as needed */
+  justify-content: center;
+  background-color: #444;
+  padding: 10px 0;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
-
 .secondnav a {
-  padding-right: 10px;
-  color: black;
-  text-decoration: underline overline;
-  font-size: 17px;
-  font-style: sans-serif;
-  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
 }
 
 .secondnav a:hover {
-  background-color: rgb(122, 122, 23);
+  background-color: #575757;
+}
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .topnav,
+  .secondnav {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items */
+  }
+
+  .topnav a,
+  .secondnav a {
+    padding: 10px 0; /* Adjust padding for smaller screens */
+  }
 }
 
 .wrapper {
-  margin-bottom: 30px;
-  display: grid;
-  align-items: center;
-  grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 50px;
+  margin-bottom: 50px;
+  margin-top: 20px; /* Adjust the value as needed */
+  display: flex; /* Make the wrapper a flex container */
+  justify-content: space-between; /* Space between children */
+  align-items: center; /* Center items vertically */
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(250px, 1fr)
+  ); /* Responsive grid */
+  column-gap: 20px; /* Adjusted gap */
   background-color: gray;
   width: 100%;
 }
 
 .image img {
-  max-width: 150%;
-  max-height: 75%;
+  max-width: 100%; /* Set to 100% for proper scaling */
+  height: auto;
 }
 
 .text {
-  font-size: 30px;
+  font-size: 2rem; /* Changed to rem for better scaling */
   font-weight: bolder;
-  margin-left: 50px;
+  text-align: center; /* Centered text */
 }
 
 .row {
-  display: grid;
+  display: flex;
+  width: 100%;
+
   grid-template-columns: repeat(
     auto-fill,
     minmax(250px, 1fr)
-  ); /* Adjusted for responsive grid */
-  gap: 16px; /* Space between grid items */
-  padding: 16px;
+  ); /* Responsive grid */
+  gap: 65px;
+  padding: 10px;
 }
 
 .column {
   text-align: center;
-  border: 1px solid #ccc; /* Added solid border */
+  border: 1px solid #ccc;
   border-radius: 8px;
   overflow: hidden;
-  transition: transform 0.3s; /* Smooth transition for scaling */
+  width: 100%;
+  transition: transform 0.3s;
 }
 
 .column:hover {
-  cursor: pointer; /* Changed to pointer for better UX */
-  transform: scale(1.05); /* Slightly scale up on hover */
-  z-index: 2;
+  cursor: pointer;
+  transform: scale(1.05);
 }
 
 .column img {
   width: 100%;
   height: auto;
+  margin-bottom: 10px;
 }
 
 .productInfo {
@@ -119,10 +151,296 @@
 }
 
 .productname {
-  font-size: 18px;
+  font-size: 1.2rem; /* Use rem for better scaling */
   font-weight: bold;
 }
 
 .productPrice {
-  font-size: 18px;
+  font-size: 1.2rem; /* Use rem for better scaling */
+}
+
+/* Dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown button */
+.secondnav a,
+.dropbtn {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px; /* Ensure consistent padding */
+  display: flex; /* Ensure all items are flex items */
+  align-items: center; /* Center items vertically */
+}
+.dropdown {
+  position: relative;
+}
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9; /* Change as needed */
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black; /* Change as needed */
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Show the dropdown on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1; /* Change as needed */
+}
+.baseballcaps {
+  display: flex;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(250px, 1fr)
+  ); /* Responsive columns */
+  gap: 65px; /* Space between grid items */
+  margin-top: 70px; /* Space above the section */
+}
+
+.cap {
+  background-color: #f9f9f9; /* Optional: background color for each cap */
+  border: 1px solid #ddd; /* Optional: border for each cap */
+  border-radius: 5px; /* Optional: rounded corners */
+  padding: 70px; /* Padding inside each cap */
+  text-align: center; /* Center the text under each image */
+}
+
+.cap img {
+  width: 100%; /* Make the image take the full width of the cap */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 200px; /* Set a maximum height for the images */
+  object-fit: cover; /* Ensure the image covers the area without distortion */
+  border-radius: 5px; /* Optional: rounded corners for images */
+}
+
+.Tshirtwrapper {
+  position: relative; /* Set position to relative to contain the overlay */
+  margin-top: 50px; /* Space below the wrapper */
+  height: 400px; /* Set a height for the wrapper */
+  background-color: rgb(139, 117, 117); /* Set the background color to brown */
+  display: flex; /* Use flexbox to center content */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+}
+
+.Joggerswrapper {
+  position: relative; /* Set position to relative to contain the overlay */
+  margin-top: 50px; /* Space below the wrapper */
+  height: 400px; /* Set a height for the wrapper */
+  background-color: rgb(139, 117, 117); /* Set the background color to brown */
+  display: flex; /* Use flexbox to center content */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+}
+
+.JText {
+  background-color: white;
+  margin-left: 50px;
+  height: 200px;
+  padding: 50px;
+}
+
+.Joggers img {
+  max-width: 100%; /* Ensure the image is responsive */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 400px; /* Limit the height to the wrapper */
+  animation: move 5s infinite alternate; /* Apply the movement animation */
+}
+.Joggers {
+  display: flex; /* Use flexbox for the Tshirt div */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  overflow: hidden; /* Hide overflow */
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0); /* Start position */
+  }
+  50% {
+    transform: translateX(20px); /* Move to the right */
+  }
+  100% {
+    transform: translateX(0); /* Return to start position */
+  }
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0); /* Start position */
+  }
+  50% {
+    transform: translateX(20px); /* Move to the right */
+  }
+  100% {
+    transform: translateX(0); /* Return to start position */
+  }
+}
+
+.Tshirt {
+  display: flex; /* Use flexbox for the Tshirt div */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  overflow: hidden; /* Hide overflow */
+}
+
+.Tshirt img {
+  max-width: 100%; /* Ensure the image is responsive */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 400px; /* Limit the height to the wrapper */
+  animation: move 5s infinite alternate; /* Apply the movement animation */
+}
+.TeeText {
+  background-color: white;
+  margin-left: 50px;
+  height: 200px;
+  padding: 50px;
+}
+
+.text1 {
+  text-align: center; /* Center the text */
+  font-weight: bolder; /* Make the text bold */
+  font-size: 2rem; /* Adjust the font size as needed */
+}
+
+.text2 {
+  text-align: center; /* Center the text */
+  font-weight: lighter;
+  font-size: 1em;
+  margin-top: 10px;
+}
+
+.text3 {
+  text-align: center; /* Center the text */
+  font-weight: bold; /* Make the text bold */
+  font-size: 2em; /* Adjust the font size as needed */
+  color: black;
+  border-radius: 8px;
+  margin-top: 30px;
+}
+.JText {
+  background-color: white;
+  margin-left: 5px;
+  height: 200px;
+  padding: 5px;
+}
+
+.Jtext1 {
+  text-align: center; /* Center the text */
+  font-weight: bolder; /* Make the text bold */
+  font-size: 2rem; /* Adjust the font size as needed */
+}
+
+.Jtext2 {
+  text-align: center; /* Center the text */
+  font-weight: lighter;
+  font-size: 1em;
+  margin-top: 10px;
+}
+
+.Jtext3 {
+  text-align: center; /* Center the text */
+  font-weight: bold; /* Make the text bold */
+  font-size: 2em; /* Adjust the font size as needed */
+  text-emphasis-position: white;
+  color: black;
+  border-radius: 8px;
+  margin-top: 30px;
+}
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%; /* Could be more or less, depending on screen size */
+  height: 50%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.footer {
+  background-color: #333; /* Dark background */
+  color: #fff; /* White text */
+  padding: 20px; /* Padding around the footer */
+  text-align: center; /* Center text */
+  margin-top: 10px;
+  max-height: 100%;
+}
+
+.footer-content {
+  margin-bottom: 50px; /* Space between content and bottom */
+}
+
+.footer-links {
+  margin: 10px 0; /* Space around links */
+}
+
+.footer-links a {
+  color: #fff; /* White text for links */
+  margin: 0 15px; /* Space between links */
+  text-decoration: none; /* Remove underline */
+}
+
+.footer-links a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+.social-media {
+  margin: 10px 0; /* Space around social media icons */
+}
+
+.social-media a {
+  color: #fff; /* White icons */
+  margin: 0 10px; /* Space between icons */
+  font-size: 20px; /* Icon size */
+}
+
+.footer-bottom {
+  border-top: 1px solid #444; /* Top border for separation */
+  padding-top: 10px; /* Padding above the bottom text */
 }
