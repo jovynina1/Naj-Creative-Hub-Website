@@ -1,0 +1,114 @@
+<?php
+include 'config.php'; // Include the database connection
+
+// Initialize error message
+$errorMessage = '';
+
+// Check if the form was submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
+    // Get the email and password from the form
+    $email = trim($_POST['email']);
+    $password = $_POST['password'];
+
+    // Validate inputs
+    if (empty($email) || empty($password)) {
+        $errorMessage = "Error: All fields are required.";
+    } else {
+        // Prepare and bind for selecting user
+        $stmt = $conn->prepare("SELECT password FROM users WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->store_result();
+
+        // Check if the user exists
+        if ($stmt->num_rows > 0) {
+            // Fetch the hashed password
+            $stmt->bind_result($hashedPassword);
+            $stmt->fetch();
+
+            // Verify the password
+            if (password_verify($password, $hashedPassword)) {
+                // Password is correct, set session variables
+                $_SESSION['email'] = $email; // You can store more user info if needed
+                // Redirect to index.php
+                header("Location: index.php");
+                exit();
+            } else {
+                $errorMessage = "Error: Incorrect password.";
+            }
+        } else {
+            $errorMessage = "Error: No user found with that email.";
+        }
+    }
+
+    // Close statement
+    $stmt->close();
+}
+
+// Close connection
+$conn->close();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login|BuyNAJProducts/VintageShirts</title>
+    <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="topnav">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search" />
+            </div>
+            <a href="#"><i class="fas fa-shopping-cart"></i> Cart</a>
+            <a href="signup.php"><i class="fas fa-user-plus" target="_blank"></i> Create account</a>
+            <a href="login.php"><i class="fas fa-sign-in-alt" target="_blank"></i> Log In</a>
+        </div>
+        &nbsp;
+        <div class="logo">
+            <img src="naj logo.jpg" />
+        </div>
+        <div class="secondnav">
+            <a href="index.php">HOME</a>
+            <a href="#">CATALOGUE</a>
+            <a href="#">NEW COLLECTIONS</a>
+            <a href="#">VINTAGE SHIRTS</a>
+            <a href="#">UNISEX STOCK T-SHIRTS</a>
+            <a href="#">PLAIN T-SHIRTS</a>
+        </div>
+    </div>
+    <div class="form-wrapper">
+        <h1>Login</h1>
+        <?php
+        // Display error message if it exists
+        if (!empty($errorMessage)) {
+            echo '<div class="error-message">' . $errorMessage . '</div>';
+        }
+        ?>
+        <form action="login.php" method="post" id="loginForm">
+            <div class="inputbox">
+                <input type="text" name="email" id="email-input" placeholder="Email" required />
+            </div>
+            <div class="inputbox">
+                <input type="password" name="password" id="password-input" placeholder="Password" required />
+            </div>
+            <div class="forgot-password">
+                <a href="forgotpassword.php">Forgot password?</a>
+            </div>
+            <div class="submit-btn">
+                <button type="submit" name="login">Login</button>
+                <div class="No account">
+                    <p>
+                        Do not have an account?
+                        <a href="signup.php">create account now</a>
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
