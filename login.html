@@ -1,4 +1,4 @@
-<?php
+<!--<?php
 include 'config.php'; // Include the database connection
 
 // Initialize error message
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
 
 // Close connection
 $conn->close();
-?>
+?>-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -83,13 +83,13 @@ $conn->close();
     </div>
     <div class="form-wrapper">
         <h1>Login</h1>
-        <?php
+        <!--<?php
         // Display error message if it exists
         if (!empty($errorMessage)) {
             echo '<div class="error-message">' . $errorMessage . '</div>';
         }
-        ?>
-        <form action="login.php" method="post" id="loginForm">
+        ?>-->
+        <form action="login.html" method="post" id="loginForm">
             <div class="inputbox">
                 <input type="text" name="email" id="email-input" placeholder="Email" required />
             </div>
@@ -97,14 +97,14 @@ $conn->close();
                 <input type="password" name="password" id="password-input" placeholder="Password" required />
             </div>
             <div class="forgot-password">
-                <a href="forgotpassword.php">Forgot password?</a>
+                <a href="forgotpassword.html">Forgot password?</a>
             </div>
             <div class="submit-btn">
                 <button type="submit" name="login">Login</button>
                 <div class="No account">
                     <p>
                         Do not have an account?
-                        <a href="signup.php">create account now</a>
+                        <a href="signup.html">create account now</a>
                     </p>
                 </div>
             </div>
