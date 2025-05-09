@@ -1,4 +1,4 @@
-<?php
+<!--<?php
 include 'config.php'; // Include the database connection
 
 // Initialize error and success messages
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['create'])) {
 
 // Close connection
 $conn->close();
-?>
+?>-->
 
 
 <!DOCTYPE html>
@@ -70,11 +70,11 @@ $conn->close();
           <i class="fas fa-search"></i>
           <input type="text" placeholder="Search" />
         </div>
-        <a href="cart.php"><i class="fas fa-shopping-cart"></i> Cart</a>
-        <a href="signup.php"
+        <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
+        <a href="signup.html"
           ><i class="fas fa-user-plus" target="_blank"></i> Create account</a
         >
-        <a href="login.php"
+        <a href="login.html"
           ><i class="fas fa-sign-in-alt" target="_blank"></i> Log In</a
         >
       </div>
@@ -93,7 +93,7 @@ $conn->close();
     </div>
         <h1>Create Account</h1>
         <div class="form-wrapper">
-            <form action="signup.php" method="post" id="signupForm">
+            <form action="signup.html" method="post" id="signupForm">
                 <label class="input-label">
                     <input type="text" name="firstName" id="firstname-input" placeholder="First Name" required />
                 </label>
