@@ -82,3 +82,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+//Hamburger toggle
+function toggleNav() {
+  const secondNav = document.getElementById("secondNav");
+  secondNav.classList.toggle("show");
+}
+
+// Close menu when clicking outside
+document.addEventListener("click", function (event) {
+  const secondNav = document.getElementById("secondNav");
+  const hamburger = document.querySelector(".hamburger");
+
+  if (!secondNav.contains(event.target) && !hamburger.contains(event.target)) {
+    secondNav.classList.remove("show");
+  }
+});
+
+
