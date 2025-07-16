@@ -83,14 +83,11 @@ $conn->close();
     </div>
         <div class="form-wrapper">
       <h1>Login</h1>
-        </div>
-    
-      <form action="login.php" method="post" id="loginForm">
+        <form action="login.php" method="post" id="loginForm">
         <div class="inputbox">
           <input
             type="text"
             name="email"
-            value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>"
             id="email-input"
             placeholder="Email"
             required
